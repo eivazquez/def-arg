@@ -130,11 +130,14 @@ pip install -r requirements.txt
 ```
 
 5. **Preparar la base de datos**
-Ejecutar el notebook `eda.ipynb` para generar el archivo `def20152021.duckdb`:
+Ejecutar  `create_db.py` para generar el archivo `def20152021.duckdb`:
 ```bash
-jupyter notebook eda.ipynb
+python create_db.py
 ```
-Ejecutar todas las celdas del notebook.
+
+**NOTA**
+Se puede visualizar en proceso completo en el notebook `eda.ipynb`, por practicidad
+se adjunta el proceso simplificado en el archivo `create_db.py`
 
 ---
 
@@ -154,7 +157,7 @@ El dashboard se abrirá automáticamente en tu navegador en `http://localhost:85
    - Seleccionar año de análisis (2020, 2021, 2022)
    - Filtrar por sexo (múltiple selección)
    - Seleccionar grupos CIE-10 (con opción "Seleccionar Todos")
-   - Seleccionar región o jurisdicción (con opción "Seleccionar Todos")
+   - Seleccionar región o jurisdicción(con opción "Seleccionar Todos")
 
 2. **Panel Principal**:
    - **Métricas KPI**: Total de defunciones, promedio mensual, meses extremos
