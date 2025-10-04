@@ -1,0 +1,5 @@
+# Ignorar la carpeta del entorno virtual
+env_dfm/
+
+# Ignorar la base de datos de DuckDB
+*.duckdb
