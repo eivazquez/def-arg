@@ -94,8 +94,6 @@ selected_sexo = st.sidebar.multiselect(
     default=df["sexo"].unique()
 )
 
-# --- Bloque de código mejorado para el filtro Grupo CIE10 ---
-
 st.sidebar.markdown("---") # Separador visual
 
 # 1. Obtenemos la lista de todas las opciones posibles primero
@@ -122,10 +120,36 @@ selected_grupos_cie10 = st.sidebar.multiselect(
 
 # --- Fin del bloque ---
 
+st.sidebar.markdown("---") # Separador visual
+
+# 1. Obtenemos la lista de todas las opciones posibles primero
+opciones_reg = df["region"].unique()
+
+# 2. Creamos el checkbox que actuará como nuestro controlador "Seleccionar Todos"
+seleccionar_todo_reg = st.sidebar.checkbox(
+    "Seleccionar Todos (Región)",
+    value=True  # Hacemos que por defecto esté marcado
+)
+
+# 3. Creamos una lista vacía para la selección por defecto
+default_reg = []
+# Si el checkbox está marcado, nuestra selección por defecto será la lista completa de opciones
+if seleccionar_todo_reg:
+    default_reg = opciones_reg
+
+# 4. Creamos el multiselect, pasándole la lista 'default_reg' que acabamos de definir
+selected_grupos_reg = st.sidebar.multiselect(
+    "Selecciona Región(es)",
+    options=opciones_reg,
+    default=default_reg
+)
+
+# --- Fin del bloque ---
 # El filtrado ocurre en cada re-ejecución del script (cada vez que un widget cambia).
 df_filtered = df[
     (df["sexo"].isin(selected_sexo)) &
-    (df["grupo_cie10"].isin(selected_grupos_cie10))
+    (df["grupo_cie10"].isin(selected_grupos_cie10)) &
+    (df["region"].isin(selected_grupos_reg))
 ]
 
 
